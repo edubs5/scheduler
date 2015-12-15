@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
 
   resources :users, only: [:create]
+  resources :sessions, only: [:create, :destroy]
 end
