@@ -21,6 +21,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # omniauth with google
 gem 'omniauth-google-oauth2'
 
+# bootstrap
+gem 'bootstrap-sass', '~> 3.3.6'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'awesome_print'

@@ -8,14 +8,20 @@
     <meta name="google-site-verification" content="We2T0kWjafAbio1AuQa8xC9wlLDIYPYTsVtYj2UA5e8" />
   </head>
   <body>
-    <div id="container">
-      <% if current_user %>
-        Signed in as <%= current_user.first_name %>
-        <%= link_to "sign_out", signout_path %>
-      <% else %>
-        <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
-      <% end %>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <!-- <p>Hello, <%= current_user.first_name %>!</p> -->
+            <li><%= link_to "Sign out", signout_path %></li>
+          <% else %>
+            <li><%= link_to "Sign in with Google", "/auth/google_oauth2" %></li>
+          <% end %>
+        </ul>
+      </nav>
     </div>
+  </header>
 
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, id: "flash_#{name}" %>
