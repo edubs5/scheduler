@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :locations
 
   def self.from_omniauth(auth)
     User.where(provider: auth[:provider], uid: auth[:uid]).first ||
