@@ -1,0 +1,12 @@
+</br>
+</br>
+</br>
+<p>Schedules index!!</p>
+
+<% if @schedules.length == 0 %>
+  <p>You have no schedules!</p>
+<% else%>
+  @schedules.each do |schedule|
+    puts schedule.inspect
+  end
+<% end %>
