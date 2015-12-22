@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :locations
+  has_many :schedules
 
   def self.from_omniauth(auth)
     User.where(provider: auth[:provider], uid: auth[:uid]).first ||
