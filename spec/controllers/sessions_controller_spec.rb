@@ -19,7 +19,7 @@ RSpec.describe SessionsController, :type => :controller do
 
     it 'redirects to root_url' do
       post :create, provider: :google_oauth2
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(schedules_path)
     end
   end
 

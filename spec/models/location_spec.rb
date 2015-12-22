@@ -7,7 +7,7 @@ RSpec.describe Location, :type => :model do
       expect(location.valid?).to be false
     end
 
-    it "is not valid without a user id" do
+    it "is not valid without a user" do
       location = Location.new(name: "the city")
       expect(location.valid?).to be false
     end
