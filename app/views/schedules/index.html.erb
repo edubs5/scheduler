@@ -5,8 +5,34 @@
 
 <% if @schedules.length == 0 %>
   <p>You have no schedules!</p>
-<% else%>
-  @schedules.each do |schedule|
-    puts schedule.inspect
-  end
+<% else %>
+  <% @schedules.each do |schedule| %>
+    <ul><%= schedule.inspect %></ul>
+  <% end %>
+  <br></br>
 <% end %>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-hover table-striped">
+    <tr>
+      <th>#</th>
+      <th>Location</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    <% n = 1 %>
+    <% @schedules.each do |schedule| %>
+      <tr>
+        <td><%= n %></td>
+        <td><%= schedule.location_id %></td>
+        <td><%= schedule.start_date %></td>
+        <td><%= schedule.end_date %></td>
+        <td><%= schedule.name %></td>
+        <td></td>
+      </tr>
+      <% n += 1 %>
+    <% end %>
+  </table>
+</div>
