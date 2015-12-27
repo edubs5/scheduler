@@ -12,27 +12,53 @@
   <br></br>
 <% end %>
 
-<div class="table-responsive">
-  <table class="table table-bordered table-hover table-striped">
-    <tr>
-      <th>#</th>
-      <th>Location</th>
-      <th>Start</th>
-      <th>End</th>
-      <th>Name</th>
-      <th>Actions</th>
-    </tr>
-    <% n = 1 %>
-    <% @schedules.each do |schedule| %>
+</br>
+<div class="container">
+  <%= form_for :schedule, url: { action: "create" } do |f| %>
+    <%= f.label "Name" %>
+    <%= f.text_field :name %>
+    </br>
+    <%= f.label "Location" %>
+    <%= f.collection_select(:location_id, @locations, :id, :name) %>
+    </br>
+    <%= f.label "Start" %>
+    <%= f.date_select :start_date %>
+    </br>
+    <%= f.label "End" %>
+    <%= f.date_select :end_date %>
+    </br>
+    <%= f.submit "Create Schedule" %>
+  <% end %>
+</div>
+</br>
+
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
       <tr>
-        <td><%= n %></td>
-        <td><%= schedule.location_id %></td>
-        <td><%= schedule.start_date %></td>
-        <td><%= schedule.end_date %></td>
-        <td><%= schedule.name %></td>
-        <td></td>
+        <th>#</th>
+        <th>Location</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Name</th>
+        <th>Actions</th>
       </tr>
-      <% n += 1 %>
-    <% end %>
-  </table>
+      <% n = 1 %>
+      <% @schedules.each do |schedule| %>
+        <tr>
+          <td><%= n %></td>
+          <td><%= schedule.location_id %></td>
+          <td><%= schedule.start_date %></td>
+          <td><%= schedule.end_date %></td>
+          <td><%= schedule.name %></td>
+          <td>
+          <%= link_to "delete", schedule_path(schedule.id), method: :delete,
+            data: { confirm: "Are you sure you want to delete "+
+              "#{schedule.name}?"} %>
+          </td>
+        </tr>
+        <% n += 1 %>
+      <% end %>
+    </table>
+  </div>
 </div>
