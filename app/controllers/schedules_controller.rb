@@ -13,6 +13,10 @@ class SchedulesController < ApplicationController
     end
   end
 
+  def show
+    @schedule = Schedule.find_by_id(params[:id])
+  end
+
   def destroy
     schedule = Schedule.find_by_id(params[:id])
     schedule.destroy
