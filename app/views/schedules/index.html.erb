@@ -46,12 +46,12 @@
       <% n = 1 %>
       <% @schedules.each do |schedule| %>
         <tr>
-          <td><%= n %></td>
-          <td><%= schedule.name %></td>
-          <td><%= schedule.location.name %></td>
-          <td><%= schedule.start_date %></td>
-          <td><%= schedule.end_date %></td>
-          <td>
+          <td class="col-md-1"><%= n %></td>
+          <td class="col-md-2"><%= schedule.name %></td>
+          <td class="col-md-2"><%= schedule.location.name %></td>
+          <td class="col-md-1"><%= schedule.start_date %></td>
+          <td class="col-md-1"><%= schedule.end_date %></td>
+          <td class="col-md-3">
           <div class="btn-group" role="group">
             <%= button_to "View", schedule_path(schedule.id), method: :get,
             form: {style: "display:inline-block;"}, class: "btn btn-default" %>
