@@ -27,5 +27,17 @@ RSpec.describe Schedule, type: :model do
       schedule = Schedule.new(user_id: 1, start_date: @today, name: "test")
       expect(schedule.valid?).to be false
     end
+
+    it "creates seven workdays if date range is Nov 6 to Nov 12" do
+      schedule = Schedule.new(user_id: 1, start_date: "6/11/2015".to_datetime,
+        end_date: "12/11/2015".to_datetime, name: "test workdays")
+      expect{ schedule.save }.to change{Workday.count}.by 7
+    end
+
+    it "creates one workday if date range is Nov 6 to Nov 6" do
+      schedule = Schedule.new(user_id: 1, start_date: "6/11/2015".to_datetime,
+        end_date: "6/11/2015".to_datetime, name: "test workdays again")
+      expect{ schedule.save }.to change{Workday.count}.by 1
+    end
   end
 end
