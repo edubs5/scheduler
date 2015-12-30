@@ -10,7 +10,7 @@ class Schedule < ActiveRecord::Base
 
   def create_work_days
     start_date.upto(end_date) do |date|
-      Workday.create(schedule_id: id, date: date)
+      Workday.create(schedule_id: id, work_date: date)
     end
   end
 end

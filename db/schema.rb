@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20151230055739) do
 
   create_table "workdays", force: :cascade do |t|
     t.integer  "schedule_id"
-    t.datetime "date"
+    t.datetime "work_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
