@@ -5,7 +5,11 @@ class Workday < ActiveRecord::Base
     work_date.strftime("%A")
   end
 
-  def month_of_year
+  def week_of_year
     work_date.strftime("%W")
+  end
+
+  def beginning_of_week_starting_sunday
+    work_date.beginning_of_week(start_day = :sunday)
   end
 end
