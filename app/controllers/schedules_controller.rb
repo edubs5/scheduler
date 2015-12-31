@@ -7,9 +7,11 @@ class SchedulesController < ApplicationController
   def create
     @schedule = current_user.schedules.new(schedule_params)
     if @schedule.save
-      redirect_to schedules_path, alert: "Schedule created successfully."
+      flash[:success] = "Schedule created successfully."
+      redirect_to schedules_path
     else
-      redirect_to schedules_path, alert: "Unable to create schedule."
+      flash[:info] = "Unable to create schedule."
+      redirect_to schedules_path
     end
   end
 
@@ -20,7 +22,8 @@ class SchedulesController < ApplicationController
   def destroy
     schedule = Schedule.find_by_id(params[:id])
     schedule.destroy
-    redirect_to schedules_path, alert: "Schedule deleted."
+    flash[:danger] = "Schedule deleted."
+    redirect_to schedules_path
   end
 
   private
