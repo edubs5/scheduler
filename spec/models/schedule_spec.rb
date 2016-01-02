@@ -49,7 +49,7 @@ RSpec.describe Schedule, type: :model do
         end_date: "12/11/2015".to_datetime,
         name: "test workdays"
       )
-      expect { schedule.save }.to change{ Workday.count }.by 7
+      expect { schedule.save }.to change { Workday.count }.by 7
     end
 
     it "creates one workday if date range is Nov 6 to Nov 6" do
@@ -59,7 +59,7 @@ RSpec.describe Schedule, type: :model do
         end_date: "6/11/2015".to_datetime,
         name: "test workdays again"
       )
-      expect { schedule.save }.to change{ Workday.count }.by 1
+      expect { schedule.save }.to change { Workday.count }.by 1
     end
   end
 end
