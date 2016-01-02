@@ -28,8 +28,8 @@ RSpec.describe Workday, type: :model do
           schedule_id: 1,
           work_date: "26/12/2015".to_datetime
         )
-        expect(@saturday.beginning_of_week_starting_sunday)
-          .to eq "20/12/2015".to_date
+        expect(@saturday.beginning_of_week_starting_sunday).
+          to eq "20/12/2015".to_date
       end
     end
   end
