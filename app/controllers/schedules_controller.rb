@@ -16,7 +16,10 @@ class SchedulesController < ApplicationController
   end
 
   def show
-    @schedule = Schedule.find_by_id(params[:id])
+    @schedule = Schedule.friendly.find(params[:id])
+    if request.path != schedule_path(@schedule)
+      redirect_to @schedule, status: :moved_permanently
+    end
   end
 
   def destroy
