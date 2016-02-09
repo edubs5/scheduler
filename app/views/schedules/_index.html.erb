@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Actions</th>
+      </tr>
+      <% n = 1 %>
+      <% @schedules.each do |schedule| %>
+        <tr>
+          <td class="col-md-1"><%= n %></td>
+          <td class="col-md-2"><%= schedule.name %></td>
+          <td class="col-md-2"><%= schedule.location.name %></td>
+          <td class="col-md-1"><%= schedule.start_date %></td>
+          <td class="col-md-1"><%= schedule.end_date %></td>
+          <td class="col-md-3">
+          <div class="btn-group" role="group">
+            <%= button_to "View", schedule_path(schedule.id), method: :get,
+            form: {style: "display:inline-block;"}, class: "btn btn-default" %>
+            <%= button_to "Delete", schedule_path(schedule.id), method: :delete,
+              data: {
+                confirm: "Are you sure you want to delete #{schedule.name}?" },
+                form: {style: "display:inline-block;"}, class: "btn btn-default" %>
+          </div>
+          </td>
+        </tr>
+        <% n += 1 %>
+      <% end %>
+    </table>
+  </div>
+</div>
