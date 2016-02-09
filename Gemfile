@@ -25,6 +25,10 @@ gem 'friendly_id', '~> 5.1.0'
 # bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
 
+# bootstrap datepicker
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'awesome_print', '1.6.1'
