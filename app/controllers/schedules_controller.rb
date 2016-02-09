@@ -4,6 +4,10 @@ class SchedulesController < ApplicationController
     @locations = current_user.locations
   end
 
+  def new
+    @schedule = Schedule.new
+  end
+
   def create
     @schedule = current_user.schedules.new(schedule_params)
     if @schedule.save
