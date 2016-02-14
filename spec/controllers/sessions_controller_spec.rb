@@ -38,4 +38,11 @@ RSpec.describe SessionsController, :type => :controller do
       expect(response).to redirect_to(root_url)
     end
   end
+
+  describe '#format_date' do
+    it 'returns the correct date' do
+      obj = SchedulesController.new()
+      expect(obj.format_date("03 - February - 2016")).to eq "3/2/2016".to_date
+    end
+  end
 end
