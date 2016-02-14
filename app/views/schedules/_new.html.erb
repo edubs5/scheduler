@@ -1,17 +1,2 @@
-<div class="container">
-  <%= form_for :schedule, url: { action: "create" } do |f| %>
-    <%= f.label "Name" %>
-    <%= f.text_field :name %>
-    </br>
-    <%= f.label "Location" %>
-    <%= f.collection_select(:location_id, @locations, :id, :name) %>
-    </br>
-    <%= f.label "Start" %>
-    <%= f.date_select :start_date %>
-    </br>
-    <%= f.label "End" %>
-    <%= f.date_select :end_date %>
-    </br>
-    <%= f.submit "Create Schedule" %>
-  <% end %>
-</div>
+
+<%= render "form" %>
