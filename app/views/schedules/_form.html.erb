@@ -28,7 +28,7 @@
             <%= f.text_field :end_date,
               class: 'datepicker form-control date',
               id: 'datetimepicker7',
-              value: f.object.start_date.try(:strftime, "%d - %B - %Y") %>
+              value: f.object.end_date.try(:strftime, "%d - %B - %Y") %>
           </div>
         </div>
       </div>
