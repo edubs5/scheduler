@@ -10,16 +10,20 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = current_user.schedules.new(schedule_params)
-    @schedule.user_id = current_user.id
+    @schedules = current_user.schedules
+    params["schedule"]["user_id"] = current_user.id
     set_schedule_dates
-    if @schedule.save
-      flash[:success] = "Schedule created successfully."
-      redirect_to schedules_path
-    else
-      flash[:info] = "Unable to create schedule."
-      redirect_to schedules_path
+    @schedule = Schedule.create(schedule_params)
+    respond_to do |format|
+      format.js
     end
+  end
+
+  def update
+    @schedule = Schedule.friendly.find(params[:id])
+    @schedules = current_user.schedules
+    set_schedule_dates
+    @schedule.update_attributes(schedule_params)
   end
 
   def show
@@ -27,6 +31,11 @@ class SchedulesController < ApplicationController
     if request.path != schedule_path(@schedule)
       redirect_to @schedule, status: :moved_permanently
     end
+  end
+
+  def edit
+    @schedule = Schedule.friendly.find(params[:id])
+    @locations = current_user.locations
   end
 
   def destroy
@@ -37,13 +46,26 @@ class SchedulesController < ApplicationController
   end
 
   def set_schedule_dates
-    @schedule.start_date = format_date(params["schedule"]["start_date"])
-    @schedule.end_date = format_date(params["schedule"]["end_date"])
+    set_start_date
+    set_end_date
   end
 
-  def format_date(date_string)
-    date_ary = date_string.split(" - ")
-    "#{date_ary[0]}/#{date_ary[1]}/#{date_ary[2]}".to_date
+  def set_start_date
+    start_date = params["schedule"]["start_date"]
+    if start_date.present?
+      date_ary = start_date.split(" - ")
+      params["schedule"]["start_date"] =
+        "#{date_ary[0]}/#{date_ary[1]}/#{date_ary[2]}".to_date
+    end
+  end
+
+  def set_end_date
+    end_date = params["schedule"]["end_date"]
+    if end_date.present?
+      date_ary = end_date.split(" - ")
+      params["schedule"]["end_date"] =
+        "#{date_ary[0]}/#{date_ary[1]}/#{date_ary[2]}".to_date
+    end
   end
 
   private
