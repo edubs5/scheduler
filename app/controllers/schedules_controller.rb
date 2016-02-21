@@ -5,7 +5,7 @@ class SchedulesController < ApplicationController
   end
 
   def new
-    @schedule = Schedule.new()
+    @schedule = Schedule.new
     @locations = current_user.locations
   end
 

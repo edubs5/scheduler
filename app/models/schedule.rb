@@ -3,7 +3,7 @@ class Schedule < ActiveRecord::Base
   friendly_id :slug_candidates, use: [:slugged, :history]
 
   validates :start_date, :end_date, :user_id, :name, :location_id,
-    presence: true
+            presence: true
 
   belongs_to :user
   belongs_to :location
