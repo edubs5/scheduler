@@ -1,4 +1,12 @@
-<h1>Schedule VIEW</h1>
+<div class="container">
+  <h1><%= @schedule.name %></h1>
+  <h4><%= @schedule.location.name %></h4>
+  <h5>
+    <%= "#{@schedule.start_date.strftime('%a %B %e, %Y')} "%>
+    <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+    <%= " #{@schedule.end_date.strftime('%a %B %e, %Y')}" %>
+  </h5>
+</div>
 
 <div class="container">
   <table class="table table-striped table-bordered table-condensed">

@@ -1,0 +1,14 @@
+$("ul.errors").html("")
+<% if @schedule.errors.any? %>
+  <% @schedule.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+  console.log(" ! ");
+  console.log("unable to save");
+  console.log("")
+<% else %>
+  $(".schedule-index").html("<%= escape_javascript(render 'index') %>")
+  $("#schedule-modal").modal("hide")
+  console.log("Schedule created/saved!");
+  console.log("");
+<% end %>

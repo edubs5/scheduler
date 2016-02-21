@@ -20,9 +20,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # omniauth with google
 gem 'omniauth-google-oauth2', '0.2.10'
-
+# clean urls
+gem 'friendly_id', '~> 5.1.0'
 # bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
+
+# bootstrap datepicker
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
