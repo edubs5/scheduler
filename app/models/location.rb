@@ -3,6 +3,7 @@ class Location < ActiveRecord::Base
   friendly_id :slug_candidates, use: [:slugged, :history]
 
   belongs_to :user
+  has_many :schedules, dependent: :destroy
   validates :name, :user, presence: true
 
   def slug_candidates
