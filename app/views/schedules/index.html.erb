@@ -3,11 +3,9 @@
   <div class="well">
     <% if @locations.present? %>
       <%= link_to "Create Schedule", new_schedule_path, remote: true, class: "btn btn-primary" %>
-      <%= link_to "Add Location", new_location_path, remote: true, class: "btn btn-primary" %>
       <%= link_to "Manage Locations", locations_path, class: "btn btn-primary" %>
     <% else %>
-      <%= link_to "Add Location", new_location_path, remote: true, class: "btn btn-primary" %>
-      <%= link_to "Manage Locations", locations_path, class: "btn btn-primary" %>
+      <%= link_to "Please Add a Location!", locations_path, class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

@@ -7,8 +7,9 @@ $("ul.errors").html("")
   console.log("unable to save");
   console.log("")
 <% else %>
-  $(".schedule-index").html("<%= escape_javascript(render 'index') %>")
-  $("#schedule-modal").modal("hide")
+  $(".schedule-index").html("<%= escape_javascript(render 'index') %>");
+  $("#schedule-modal").modal("hide");
+  $("#schedule-table").append("<%= j render(@schedule) %>");
   console.log("Schedule created/saved!");
   console.log("");
 <% end %>
