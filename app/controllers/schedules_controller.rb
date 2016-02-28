@@ -39,10 +39,12 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
-    schedule = Schedule.find_by_id(params[:id])
-    schedule.destroy
-    flash[:danger] = "Schedule deleted."
-    redirect_to schedules_path
+    @schedule = Schedule.find_by_id(params[:id])
+    @schedule.destroy
+    respond_to do |format|
+      format.html { redirect_to schedules_path }
+      format.js
+    end
   end
 
   def set_schedule_dates

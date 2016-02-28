@@ -1,0 +1,16 @@
+<tr id="location_<%= location.id %>">
+  <td><%= location.name %></td>
+  <td class='col-md-3'>
+    <div class='btn-group' role='group'>
+      <%= button_to 'Edit', edit_location_path(location.slug),
+        remote: true, method: :get, form: { style: 'display:inline-block;'} ,
+        class: 'btn btn-default btn-warning' %>
+      <%= button_to "Delete", location_path(location.id), method: :delete,
+        data: {
+          confirm: "Are you sure you want to delete #{location.name}? \n\n This will delete all schedules with this location too!" },
+          remote: true,
+          form: { style: "display:inline-block;" },
+          class: "btn btn-default btn-danger" %>
+    </div>
+  </td>
+</tr>

@@ -1,0 +1,15 @@
+$("ul.errors").html("")
+<% if @location.errors.any? %>
+  <% @location.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+  console.log(" ! ");
+  console.log("unable to save");
+  console.log("")
+<% else %>
+  $(".location-index").html("<%= escape_javascript(render 'index') %>");
+  $("#location-modal").modal("hide");
+  $("#location-table").append("<%= j render(@location) %>")
+  console.log("Location created/saved!");
+  console.log("");
+<% end %>

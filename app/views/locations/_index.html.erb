@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped" id="location-table">
+      <tr>
+        <th class="col-md-9">Name</th>
+        <th class="col-md-3">Actions</th>
+      </tr>
+      <% @locations.each do |location| %>
+        <%= render 'location', location: location %>
+      <% end %>
+    </table>
+  </div>
+</div>

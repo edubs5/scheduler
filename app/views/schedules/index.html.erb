@@ -1,6 +1,12 @@
 <div class="container">
+  <h1>Schedules</h1>
   <div class="well">
-    <%= link_to "New Schedule", new_schedule_path, remote: true, class: "btn btn-primary" %>
+    <% if @locations.present? %>
+      <%= link_to "Create Schedule", new_schedule_path, remote: true, class: "btn btn-primary" %>
+      <%= link_to "Manage Locations", locations_path, class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to "Please Add a Location!", locations_path, class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
 <div class="new-schedule"></div>
