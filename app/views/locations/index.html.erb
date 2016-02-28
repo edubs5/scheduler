@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Locations</h1>
+  <div class="well">
+    <%= link_to "Add Location", new_location_path, remote: true, class: "btn btn-primary" %>
+    <%= link_to "Manage Schedules", schedules_path, class: "btn btn-primary" %>
+  </div>
+</div>
+<div class="new-location"></div>
+
+<%= render 'index' %>
+
+<div id="location-modal" class="modal fade"></div>
