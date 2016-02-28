@@ -1,4 +1,4 @@
-<tr>
+<tr id="schedule_<%= schedule.id %>">
   <td class="col-md-4"><%= schedule.name %></td>
   <td class="col-md-2"><%= schedule.location.name %></td>
   <td class="col-md-1"><%= schedule.start_date %></td>
@@ -9,7 +9,7 @@
     form: {style: "display:inline-block;"}, class: "btn btn-default btn-primary" %>
     <%= button_to "Edit", edit_schedule_path(schedule.slug), remote: true, method: :get,
       form: {style: "display:inline-block;"}, class: "btn btn-default btn-warning" %>
-    <%= button_to "Delete", schedule_path(schedule.id), method: :delete,
+    <%= button_to "Delete", schedule_path(schedule.id), method: :delete, remote: true,
       data: {
         confirm: "Are you sure you want to delete #{schedule.name}?" },
         form: {style: "display:inline-block;"}, class: "btn btn-default btn-danger" %>
