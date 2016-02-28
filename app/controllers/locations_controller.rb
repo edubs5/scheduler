@@ -28,10 +28,12 @@ class LocationsController < ApplicationController
   end
 
   def destroy
-    location = Location.find_by_id(params[:id])
-    location.destroy
-    flash[:danger] = "Location deleted."
-    redirect_to locations_path
+    @location = Location.find_by_id(params[:id])
+    @location.destroy
+    respond_to do |format|
+      format.html { redirect_to locations_path }
+      format.js
+    end
   end
 
   private
