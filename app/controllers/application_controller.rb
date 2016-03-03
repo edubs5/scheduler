@@ -5,4 +5,10 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   helper_method :current_user
 
+  def authenticate_user
+    if !current_user
+      redirect_to '/'
+      flash[:info] = "Please sign in."
+    end
+  end
 end

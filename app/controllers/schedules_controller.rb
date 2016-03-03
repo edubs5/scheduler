@@ -1,4 +1,6 @@
 class SchedulesController < ApplicationController
+  before_action :authenticate_user
+
   def index
     @schedules = current_user.schedules
     @locations = current_user.locations
