@@ -1,14 +1,18 @@
 class SchedulesController < ApplicationController
   before_action :authenticate_user
+  after_action :verify_authorized, except: [ :set_schedule_dates,
+    :set_start_date, :set_end_date ]
 
   def index
     @schedules = current_user.schedules
     @locations = current_user.locations
+    authorize Schedule
   end
 
   def new
     @schedule = Schedule.new
     @locations = current_user.locations
+    authorize @schedule
   end
 
   def create
@@ -16,6 +20,7 @@ class SchedulesController < ApplicationController
     params["schedule"]["user_id"] = current_user.id
     set_schedule_dates
     @schedule = Schedule.create(schedule_params)
+    authorize @schedule
     respond_to do |format|
       format.js
     end
@@ -23,6 +28,7 @@ class SchedulesController < ApplicationController
 
   def update
     @schedule = Schedule.friendly.find(params[:id])
+    authorize @schedule
     @schedules = current_user.schedules
     set_schedule_dates
     @schedule.update_attributes(schedule_params)
@@ -30,6 +36,7 @@ class SchedulesController < ApplicationController
 
   def show
     @schedule = Schedule.friendly.find(params[:id])
+    authorize @schedule
     if request.path != schedule_path(@schedule)
       redirect_to @schedule, status: :moved_permanently
     end
@@ -38,10 +45,12 @@ class SchedulesController < ApplicationController
   def edit
     @schedule = Schedule.friendly.find(params[:id])
     @locations = current_user.locations
+    authorize @schedule
   end
 
   def destroy
     @schedule = Schedule.find_by_id(params[:id])
+    authorize @schedule
     @schedule.destroy
     respond_to do |format|
       format.html { redirect_to schedules_path }
@@ -76,11 +85,7 @@ class SchedulesController < ApplicationController
 
   def schedule_params
     params.require(:schedule).permit(
-      :name,
-      :start_date,
-      :end_date,
-      :user_id,
-      :location_id
+      :name, :start_date, :end_date, :user_id, :location_id
     )
   end
 end
