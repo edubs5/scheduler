@@ -8,7 +8,7 @@ class SchedulePolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    current_user_is_creator_of_record?
   end
 
   def create?
@@ -20,7 +20,7 @@ class SchedulePolicy < ApplicationPolicy
   end
 
   def edit?
-    current_user_is_creator_of_record
+    current_user_is_creator_of_record?
   end
 
   def destroy?

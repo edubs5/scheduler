@@ -7,6 +7,7 @@ RSpec.describe SessionsController, :type => :controller do
 
   describe '#create' do
     it 'create user' do
+      User.delete_all
       expect{ post :create, provider: :google_oauth2 }
         .to change{ User.count }
         .by 1
