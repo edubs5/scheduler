@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
   before_action :authenticate_user
-  after_action :verify_authorized, except: [ :set_schedule_dates,
-    :set_start_date, :set_end_date ]
+  after_action :verify_authorized, except: [:set_schedule_dates,
+                                            :set_start_date, :set_end_date ]
 
   def index
     @schedules = current_user.schedules

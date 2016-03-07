@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authenticate_user
-    if !current_user
-      redirect_to '/'
+    unless current_user
+      redirect_to "/"
       flash[:info] = "Please sign in."
     end
   end

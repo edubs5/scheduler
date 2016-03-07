@@ -40,7 +40,7 @@ RSpec.describe SchedulePolicy do
 
   context "when another user tries action on someone else's record" do
     before(:example) do
-      @schedule2 = build(:schedule, user_id: "#{@user.id + 1}")
+      @schedule2 = build(:schedule, user_id: @user.id + 1)
       @schedule_policy2 = SchedulePolicy.new(@user, @schedule2)
     end
 
