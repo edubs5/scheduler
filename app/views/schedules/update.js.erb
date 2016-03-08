@@ -1,1 +1,2 @@
-<%= render "save" %>
+$("#schedule-modal").modal("hide");
+$("#schedule_<%= @schedule.id %>").replaceWith("<%= j render(@schedule) %>");
