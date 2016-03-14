@@ -19,14 +19,10 @@
       <th class="text-center">Friday</th>
       <th class="text-center">Saturday</th>
     </tr>
-    <tr>
-      <td class="day col-sm-1"></td>
-      <td class="day col-sm-1"></td>
-      <td class="day col-sm-1"></td>
-      <td class="day col-sm-1"></td>
-      <td class="day col-sm-1"></td>
-      <td class="day col-sm-1"></td>
-      <td class="day col-sm-1"></td>
-    </tr>
+    <% @work_weeks.each do |week| %>
+      <tr>
+        <%= render "week", week: week %>
+      </tr>
+    <% end %>
   </table>
 </div>
