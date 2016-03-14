@@ -34,6 +34,7 @@ class SchedulesController < ApplicationController
 
   def show
     @schedule = Schedule.friendly.find(params[:id])
+    @work_weeks = @schedule.work_weeks
     authorize @schedule
     if request.path != schedule_path(@schedule)
       redirect_to @schedule, status: :moved_permanently
