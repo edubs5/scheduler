@@ -2,14 +2,14 @@
 class Schedule
   class CompleteTheWeek
     WEEK_DAYS = {
-      "Sunday": "28/2/2016".to_date,
-      "Monday": "29/2/2016".to_date,
-      "Tuesday": "1/3/2016".to_date,
-      "Wednesday": "2/3/2016".to_date,
-      "Thursday": "3/3/2016".to_date,
-      "Friday": "4/3/2016".to_date,
-      "Saturday": "5/3/2016".to_date
-    }.freeze
+      :"Sunday" => "28/2/2016".to_date,
+      :"Monday" => "29/2/2016".to_date,
+      :"Tuesday" => "1/3/2016".to_date,
+      :"Wednesday" => "2/3/2016".to_date,
+      :"Thursday" => "3/3/2016".to_date,
+      :"Friday" => "4/3/2016".to_date,
+      :"Saturday" => "5/3/2016".to_date
+    }
 
     DAYS = %w(Sunday Monday Tuesday Wednesday Thursday Friday Saturday)
 
