@@ -33,4 +33,22 @@ class Schedule < ActiveRecord::Base
   def should_generate_new_friendly_id?
     name_changed? || super
   end
+
+  def work_weeks
+    weeks = group_by_weeks
+    complete_the_weeks(weeks)
+  end
+
+  def complete_the_weeks(weeks)
+    completed_weeks = []
+    weeks.each do |week|
+      complete = CompleteTheWeek.new(week).complete_the_week
+      completed_weeks << complete
+    end
+    completed_weeks
+  end
+
+  def group_by_weeks
+    workdays.group_by { |date| date.work_date.strftime("%U") }.values
+  end
 end

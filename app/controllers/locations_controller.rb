@@ -2,7 +2,7 @@ class LocationsController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @locations = current_user.locations
+    @locations = current_user.locations.order("name")
   end
 
   def new
@@ -10,7 +10,6 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @locations = current_user.locations
     params["location"]["user_id"] = current_user.id
     @location = Location.create(location_params)
     respond_to do |format|
@@ -19,14 +18,12 @@ class LocationsController < ApplicationController
   end
 
   def update
-    @locations = current_user.locations
     @location = Location.friendly.find(params[:id])
     @location.update_attributes(location_params)
   end
 
   def edit
     @location = Location.friendly.find(params[:id])
-    @locations = current_user.locations
   end
 
   def destroy

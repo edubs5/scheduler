@@ -1,1 +1,2 @@
-<%= render "save" %>
+$("#location-modal").modal("hide");
+$("#location_<%= @location.id %>").replaceWith("<%= j render(@location) %>");

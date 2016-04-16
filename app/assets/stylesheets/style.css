@@ -1,3 +1,19 @@
 .day {
   height: 100px;
+  position: relative;
+}
+
+.blank_day {
+  background-color: #848484;
+}
+
+.day-number {
+  text-align: right;
+  padding: 0px 5px;
+}
+
+.senior {
+  border: 1px;
+  border-style: solid;
+  border-color: green;
 }

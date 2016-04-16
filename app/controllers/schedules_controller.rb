@@ -4,7 +4,7 @@ class SchedulesController < ApplicationController
                                             :set_start_date, :set_end_date ]
 
   def index
-    @schedules = current_user.schedules
+    @schedules = current_user.schedules.order("name")
     @locations = current_user.locations
     authorize Schedule
   end
@@ -16,7 +16,6 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedules = current_user.schedules
     params["schedule"]["user_id"] = current_user.id
     set_schedule_dates
     @schedule = Schedule.create(schedule_params)
@@ -29,13 +28,13 @@ class SchedulesController < ApplicationController
   def update
     @schedule = Schedule.friendly.find(params[:id])
     authorize @schedule
-    @schedules = current_user.schedules
     set_schedule_dates
     @schedule.update_attributes(schedule_params)
   end
 
   def show
     @schedule = Schedule.friendly.find(params[:id])
+    @work_weeks = @schedule.work_weeks
     authorize @schedule
     if request.path != schedule_path(@schedule)
       redirect_to @schedule, status: :moved_permanently
