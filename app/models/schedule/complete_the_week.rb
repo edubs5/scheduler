@@ -9,10 +9,9 @@ class Schedule
       "Thursday": "3/3/2016".to_date,
       "Friday": "4/3/2016".to_date,
       "Saturday": "5/3/2016".to_date
-    }
+    }.freeze
 
-    DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
-            "Friday", "Saturday"]
+    DAYS = %w(Sunday Monday Tuesday Wednesday Thursday Friday Saturday)
 
     def initialize(week)
       @week = week

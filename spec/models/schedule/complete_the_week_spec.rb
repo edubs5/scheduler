@@ -51,4 +51,3 @@ RSpec.describe Schedule::CompleteTheWeek do
     end
   end
 end
-
