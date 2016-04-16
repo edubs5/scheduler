@@ -36,7 +36,7 @@ class Schedule < ActiveRecord::Base
 
   def work_weeks
     weeks = group_by_weeks
-    complete_weeks = complete_the_weeks(weeks)
+    complete_the_weeks(weeks)
   end
 
   def complete_the_weeks(weeks)

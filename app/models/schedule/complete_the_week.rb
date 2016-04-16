@@ -19,17 +19,17 @@ class Schedule
     end
 
     def complete_the_week
-      is_not_a_full_week? ? complete_week : @week
+      not_a_full_week? ? complete_week : @week
     end
 
-    def is_not_a_full_week?
+    def not_a_full_week?
       @week.length != 7
     end
 
     def complete_week
       missing_days.each do |day|
         missing_day = Workday.new(work_date: WEEK_DAYS[day.to_sym],
-          schedule_id: -1)
+                                  schedule_id: -1)
         @week << missing_day
       end
       order_week_by_week_day
@@ -41,7 +41,7 @@ class Schedule
         @week.each do |date|
           if date.week_day == day
             order << date
-            @week.delete_if { |date| date.week_day == date }
+            @week.delete_if { |current_day| current_day.week_day == date }
           end
         end
       end

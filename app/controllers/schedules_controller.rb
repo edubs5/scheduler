@@ -4,7 +4,7 @@ class SchedulesController < ApplicationController
                                             :set_start_date, :set_end_date ]
 
   def index
-    @schedules = current_user.schedules.order('name')
+    @schedules = current_user.schedules.order("name")
     @locations = current_user.locations
     authorize Schedule
   end

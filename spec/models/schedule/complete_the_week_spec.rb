@@ -12,11 +12,11 @@ RSpec.describe Schedule::CompleteTheWeek do
     @complete_week = [@sun, @mon, @tue, @wed, @thu, @fri, @sat]
   end
 
-  describe "#is_not_a_full_week?" do
+  describe "#not_a_full_week?" do
     context "when all seven days are present" do
       it "true" do
         complete_the_week = Schedule::CompleteTheWeek.new(@complete_week)
-        expect(complete_the_week.is_not_a_full_week?).to eq false
+        expect(complete_the_week.not_a_full_week?).to eq false
       end
     end
 
@@ -24,7 +24,7 @@ RSpec.describe Schedule::CompleteTheWeek do
       it "false" do
         incomplete_week = [@sun, @fri]
         complete_the_week = Schedule::CompleteTheWeek.new(incomplete_week)
-        expect(complete_the_week.is_not_a_full_week?).to eq true
+        expect(complete_the_week.not_a_full_week?).to eq true
       end
     end
   end
