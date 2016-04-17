@@ -2,13 +2,13 @@
 class Schedule
   class CompleteTheWeek
     WEEK_DAYS = {
-      :"Sunday" => "28/2/2016".to_date,
-      :"Monday" => "29/2/2016".to_date,
-      :"Tuesday" => "1/3/2016".to_date,
-      :"Wednesday" => "2/3/2016".to_date,
-      :"Thursday" => "3/3/2016".to_date,
-      :"Friday" => "4/3/2016".to_date,
-      :"Saturday" => "5/3/2016".to_date
+      sunday: "28/2/2016".to_date,
+      monday: "29/2/2016".to_date,
+      tuesday: "1/3/2016".to_date,
+      wednesday: "2/3/2016".to_date,
+      thursday: "3/3/2016".to_date,
+      friday: "4/3/2016".to_date,
+      saturday: "5/3/2016".to_date
     }
 
     DAYS = %w(Sunday Monday Tuesday Wednesday Thursday Friday Saturday)
@@ -27,7 +27,7 @@ class Schedule
 
     def complete_week
       missing_days.each do |day|
-        missing_day = Workday.new(work_date: WEEK_DAYS[day.to_sym],
+        missing_day = Workday.new(work_date: WEEK_DAYS[day.downcase.to_sym],
                                   schedule_id: -1)
         @week << missing_day
       end
