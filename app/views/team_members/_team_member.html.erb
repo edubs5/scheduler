@@ -1,0 +1,17 @@
+<tr id="team_member_<%= team_member.id %>">
+  <td><%= team_member.first_name %></td>
+  <td><%= team_member.last_name %></td>
+  <td class='col-md-3'>
+    <div class='btn-group' role='group'>
+      <%= button_to 'Edit', edit_team_member_path(team_member.id),
+        remote: true, method: :get, form: { style: 'display:inline-block;'} ,
+        class: 'btn btn-default btn-warning' %>
+      <%= button_to "Delete", team_member_path(team_member.id), method: :delete,
+        data: {
+          confirm: "Are you sure you want to delete #{team_member.name}?" },
+          remote: true,
+          form: { style: "display:inline-block;" },
+          class: "btn btn-default btn-danger" %>
+    </div>
+  </td>
+</tr>

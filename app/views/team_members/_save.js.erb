@@ -1,0 +1,14 @@
+$("ul.errors").html("")
+<% if @team_member.errors.any? %>
+  <% @team_member.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+  console.log(" ! ");
+  console.log("unable to save");
+  console.log("")
+<% else %>
+  $("#team_member-modal").modal("hide");
+  $("#team_member-table").append("<%= j render(@team_member) %>")
+  console.log("Created team member");
+  console.log("");
+<% end %>

@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
   resources :schedules
   resources :locations
+  resources :team_members
 end
