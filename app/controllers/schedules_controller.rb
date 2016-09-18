@@ -6,6 +6,7 @@ class SchedulesController < ApplicationController
   def index
     @schedules = current_user.schedules.order("name")
     @locations = current_user.locations
+    @team_members = current_user.team_members
     authorize Schedule
   end
 

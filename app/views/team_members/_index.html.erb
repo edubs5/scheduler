@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped" id="team_member-table">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Actions</th>
+      </tr>
+      <% n = 1 %>
+      <% @team_members.each do |team_member| %>
+        <%= render 'team_member', team_member: team_member %>
+      <% end %>
+    </table>
+  </div>
+</div>

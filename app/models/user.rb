@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :locations
-  has_many :schedules
+  has_many :locations, dependent: :destroy
+  has_many :schedules, dependent: :destroy
+  has_many :team_members, dependent: :destroy
 
   def self.from_omniauth(auth)
     User.where(provider: auth[:provider], uid: auth[:uid]).first ||

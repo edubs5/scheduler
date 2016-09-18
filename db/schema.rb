@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223071043) do
+ActiveRecord::Schema.define(version: 20160917215140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 20160223071043) do
 
   add_index "locations", ["slug"], name: "index_locations_on_slug", using: :btree
 
+  create_table "locations_team_members", id: false, force: :cascade do |t|
+    t.integer "location_id"
+    t.integer "team_member_id"
+  end
+
+  add_index "locations_team_members", ["location_id"], name: "index_locations_team_members_on_location_id", using: :btree
+  add_index "locations_team_members", ["team_member_id"], name: "index_locations_team_members_on_team_member_id", using: :btree
+
   create_table "schedules", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "location_id"
@@ -51,6 +59,14 @@ ActiveRecord::Schema.define(version: 20160223071043) do
   end
 
   add_index "schedules", ["slug"], name: "index_schedules_on_slug", using: :btree
+
+  create_table "team_members", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"

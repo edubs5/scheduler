@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Team Members</h1>
+  <div class="well">
+    <%= link_to "Add Team Member", new_team_member_path, remote: true, class: "btn btn-primary" %>
+    <%= link_to "Manage Schedules", schedules_path, class: "btn btn-primary" %>
+    <%= link_to "Manage Locations", locations_path, class: "btn btn-primary" %>
+  </div>
+</div>
+<div class="new-team_member"></div>
+
+<%= render 'index' %>
+
+<div id="team_member-modal" class="modal fade"></div>

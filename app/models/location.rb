@@ -4,6 +4,7 @@ class Location < ActiveRecord::Base
 
   belongs_to :user
   has_many :schedules, dependent: :destroy
+  has_and_belongs_to_many :team_members, join_table: :locations_team_members
   validates :name, :user, presence: true
 
   def slug_candidates
