@@ -1,0 +1,17 @@
+<tr>
+  <% week.each do |day| %>
+    <% if day.schedule_id == -1 %>
+      <td class="day col-sm-1 blank_day"></td>
+    <% else %>
+      <% if day.work_date.month.even? %>
+        <td class="day col-sm-1 even_month" id="<%= day.id %>">
+          <%= render "week", day: day %>
+        </td>
+      <% else %>
+        <td class="day col-sm-1 odd_month" id="<%= day.id %>">
+          <%= render "week", day: day %>
+        </td>
+      <% end %>
+    <% end %>
+  <% end %>
+</tr>
