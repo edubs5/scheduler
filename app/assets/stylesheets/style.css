@@ -12,6 +12,20 @@
   padding: 0px 5px;
 }
 
+.month {
+  font-style: italic;
+  text-align: right;
+  padding: 0px 5px;
+}
+
+.odd_month {
+  background-color: #FEF9E7;
+}
+
+.even_month {
+  background-color: #FDF2E9;
+}
+
 .senior {
   border: 1px;
   border-style: solid;

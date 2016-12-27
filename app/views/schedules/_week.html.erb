@@ -1,14 +1,6 @@
-<tr>
-  <% week.each do |day| %>
-    <% if day.schedule_id == -1 %>
-      <td class="day col-sm-1 blank_day"></td>
-    <% else %>
-      <td class="day col-sm-1" id="<%= day.id %>">
-        <div class="day-number">
-          <%= day.work_date.day %>
-        </div>
-          <!-- <%= day.week_day %> -->
-      </td>
-    <% end %>
-  <% end %>
-</tr>
+<div class="day-number">
+  <%= day.work_date.day %>
+</div>
+<div class="month">
+  <%= day.work_date.strftime("%b") %>
+</div>

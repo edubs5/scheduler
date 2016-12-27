@@ -6,7 +6,7 @@
 
 <div class="container">
   <h1><%= @schedule.name %></h1>
-  <h4><%= @schedule.location.name %></h4>
+  <h4>Location: <%= @schedule.location.name %></h4>
   <h5>
     <%= "#{@schedule.start_date.strftime('%a %B %e, %Y')} "%>
     <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
@@ -27,7 +27,7 @@
     </tr>
     <% @work_weeks.each do |week| %>
       <tr>
-        <%= render "week", week: week %>
+        <%= render "work_week", week: week %>
       </tr>
     <% end %>
   </table>
